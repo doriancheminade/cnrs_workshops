@@ -46,8 +46,9 @@ function addAtelier($theme,$type,$Date_and_Horaires,$Remarque,$Lieu,$Duree_Ateli
 	function suppressionAtelier($DeleteValue){
 		$connexion = getBdd();
 		try{
-			$suppression = $connexion -> prepare("Delete * from atelier where ID_Atelier ='".$DeleteValue."'");
+			$suppression = $connexion -> prepare("DELETE from atelier where theme='".$DeleteValue."'");
 			$suppression -> execute() or die(print_r($suppression->errorInfo(), true));
+			echo "Vous avez bien supprime votre atelier. <a href= atelier.php> accueil </a>";
 		}
 		catch (Exception $e)
 		{
@@ -55,12 +56,37 @@ function addAtelier($theme,$type,$Date_and_Horaires,$Remarque,$Lieu,$Duree_Ateli
 		}
 	}
 
-	function ModificationAtelier($theme,$Champ, $newValue, $ID_Atelier){
+	function ModificationAtelier($theme,$type,$Date_and_Horaires,$Remarque,$Lieu,$Duree_Atelier,$Capacite,$Inscription, $Description,$animateur,$partenaires,$public,$content){
+			$connexion = getBdd();
+			try{
+			$recuperationID = $connexion -> prepare("SELECT ID_Atelier from atelier where theme = '".$theme."'");
+			$update = $connexion -> prepare
+				("UPDATE atelier SET type = '" . $type . "', Date_and_Horaires = '" . $Date_and_Horaires .
+			 "', Remarque = '" . $Remarque . "', Lieu = '" . $Lieu .
+			  "', Duree_Atelier = '" . $Duree_Atelier . "', Capacite = '" . $Capacite .
+			   "', Inscription = '" . $Inscription . 
+			   	 "', Description = '" . $Description . "', animateur = '" . $animateur .
+			   	  "', partenaires = '" . $partenaires . "', public = '" . $public .
+			   	 "', public = '" . $public . "', content = '" . $content . "'
+			   WHERE theme = '" . $theme . "' ") ;
+
+
+			$update -> execute() or die(print_r($update->errorInfo(), true));
+			echo " Votre modification à bien ete effectue. <a href='atelier.php'> Accueil </a>";
+		}
+		catch (Exception $e)
+		{
+	        die('Erreur : ' . $e->getMessage());
+		}
+	}
+
+	function SelectionAtelier($theme){
 		$connexion = getBdd();
 		try{
-			$recuperationID = $connexion -> prepare("select ID_Atelier from atelier where theme = '".$theme."'");
-			$suppression = $connexion -> prepare("UPDATE atelier set '".$champ."' = '".$newValue."' where ID_Atelier = '".$recuperation."' ");
-			$suppression -> execute() or die(print_r($suppression->errorInfo(), true));
+			$requete = $connexion -> prepare("SELECT * from atelier where theme = '".$theme."'");
+			$requete -> execute() or die(print_r($requete->errorInfo(), true));
+			$recuperationAtelier = $requete-> fetch();
+			return $recuperationAtelier;
 		}
 		catch (Exception $e)
 		{

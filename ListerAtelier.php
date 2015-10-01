@@ -21,12 +21,22 @@
 				<?php echo $row["theme"] ?>
 			</div>
 			<div id="cadre">
-					
 				<div id="suppression">
-					<img src="images/del.gif" />
+					 <?php 
+					 $value = $row["theme"];
+					 	echo'   <form name="suppression" action="controleur.php" method="post">
+									<td align="left"> <button value='.$value.' name="valeur" type="submit">suppression</button></td>
+									<input  type="hidden" value= "suppression" name ="suppression" id="suppression"/>
+								</form>'
+					 ?>
 				</div>
 				<div id="modification">
-					<img src="images/edit.gif" />
+					 <?php 
+						 	echo'   <form name="suppression" action="controleur.php" method="post">
+									<td align="left"> <button value='.$value.' name="valeur" type="submit">modification</button></td>
+									<input  type="hidden" value= "modification" name ="modification" id="modification"/>
+									</form>'
+					 ?>
 				</div>
 			</div>
 		</div>'

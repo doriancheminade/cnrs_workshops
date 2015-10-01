@@ -1,0 +1,2 @@
+#!/bin/bash
+java -jar /home/dorian/Documents/work/php/selenium-2.47.1/selenium-java-2.47.1-srcs.jar -htmlSuite "*firefox" "http://localhost/cnrs_workshops.com/atelier.php" "test/test.php" "test/results.html"

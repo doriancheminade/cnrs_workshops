@@ -10,7 +10,7 @@ Profession varchar(256)
 
 
 CREATE TABLE atelier(
-ID_Atelier int(5) PRIMARY KEY,
+ID_Atelier int AUTO_INCREMENT PRIMARY KEY,
 theme varchar(256) NOT NULL,
 type varchar(256),
 Date_and_Horaires varchar(256) NOT NULL,
@@ -28,3 +28,5 @@ content varchar(256)
 );
 
 ALTER TABLE atelier ADD FOREIGN KEY (Id_Laboratory) references Laboratoire(Id_Laboratoire);
+ALTER TABLE atelier CONVERT TO CHARACTER SET utf8;
+ALTER TABLE laboratoire CONVERT TO CHARACTER SET utf8;
