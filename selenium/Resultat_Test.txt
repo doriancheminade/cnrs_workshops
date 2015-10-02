@@ -1,0 +1,15 @@
+Atelier to AddAtelier Ok 
+AddAtelier write content Ok 
+AddAtelier Addcontent Ok
+AddAtelier to Atelier Ok
+Atelier to ListAtelier Ok
+Modification clic Ok
+Modification area Ok
+Modification validation Ok
+Modification to Atelier Ok
+Atelier to ListAtelier Ok
+ListAtelier to Atelier Ok
+Atelier to ListAtelier Ok
+suppression Ok
+go to atelier Ok
+verification List Ok

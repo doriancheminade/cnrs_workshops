@@ -1,0 +1,106 @@
+html{
+background-color: rgb(127,127,127);
+margin-left:200px;
+margin-right:200px;
+margin-bottom:50px;
+
+}
+body
+{
+background: #b7bfbc !important;
+font-family :  Verdana;
+
+  
+}
+h2{
+    text-align:center;
+    position:absolute;
+    top:20px;
+    left:400px;
+
+}
+
+p{
+
+    text-align:center;
+    background-color:rgb(194,214,155);
+    color:white;
+    width:300;
+    font-size:x-large;
+}
+h1{
+  text-align:center;
+  position:absolute;
+  top:20px;
+  left:400px;
+
+}
+
+
+td{
+    padding:10;
+}
+th{
+    background-color:rgb(127,127,127);
+    padding:15;
+    text-align:center;
+    color:white;
+}
+
+#listage{
+    margin:auto;
+    width:800px;
+    height: 25px;
+}
+
+#ListeAtelier{
+    text-align: center;
+    background-color: white;
+    width:500px;
+    float:left;
+}
+
+#cadre{
+    float:right;
+    width:290px;
+}
+
+#suppression{
+
+    float:left;
+    width:100px;
+}
+
+#modification{
+    float:left;
+    width:20px;
+}
+table{
+	border:3px solid rgb(127,127,127);
+	font-size:small;
+	width: 60%;
+
+}
+.bouton1{
+	position: absolute;
+	bottom:70px;
+	left:530px;
+}
+.bouton2{
+	position: absolute;
+	bottom:70px;
+	left:660px;
+}
+.acc{
+	border:3px solid #b7bfbc !important;
+width: 28%;
+}
+.ret{
+
+	border:3px solid #b7bfbc !important;
+width: 50%;
+}
+
+
+
+
