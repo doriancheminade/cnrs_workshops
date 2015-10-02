@@ -1,6 +1,8 @@
-CREATE DATABASE CNRS;
+CREATE DATABASE IF NOT EXISTS CNRS ;
 
-CREATE TABLE Laboratoire(
+USE CNRS;
+
+CREATE TABLE IF NOT EXISTS Laboratoire(
 Id_Laboratoire int(5) PRIMARY KEY NOT NULL,
 nom_laboratory varchar(256) NOT NULL,
 Ville varchar(256),
@@ -9,7 +11,7 @@ Profession varchar(256)
 );
 
 
-CREATE TABLE atelier(
+CREATE TABLE IF NOT EXISTS atelier(
 ID_Atelier int AUTO_INCREMENT PRIMARY KEY,
 theme varchar(256) NOT NULL,
 type varchar(256),
@@ -29,4 +31,4 @@ content varchar(256)
 
 ALTER TABLE atelier ADD FOREIGN KEY (Id_Laboratory) references Laboratoire(Id_Laboratoire);
 ALTER TABLE atelier CONVERT TO CHARACTER SET utf8;
-ALTER TABLE laboratoire CONVERT TO CHARACTER SET utf8;
+ALTER TABLE Laboratoire CONVERT TO CHARACTER SET utf8;

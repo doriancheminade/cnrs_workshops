@@ -1,0 +1,59 @@
+<?php
+class MyTests extends PHPUnit_Extensions_SeleniumTestCase
+{
+  protected function setUp()
+  {
+    $this->setBrowser("*firefox");
+    $this->setBrowserUrl("http://localhost/cnrs_workshops.com/atelier.php");
+  }
+
+  public function test_add_atelier()
+  {
+    $this->open("/cnrs_workshops.com/atelier.php");
+    $this->click("css=button.btn.btn-primary");
+    $this->waitForPageToLoad("30000");
+    $this->type("id=theme", "topologie");
+    $this->type("id=type", "math");
+    $this->type("id=date", "mardi");
+    $this->type("id=remarque", "math");
+    $this->type("id=lieu", "amphi b");
+    $this->type("id=durÃ©e", "1h20");
+    $this->type("id=capacitÃ©", "50");
+    $this->type("id=inscription", "sur demande");
+    $this->type("id=description", "presentation generale");
+    $this->type("id=animateur", "jean machin");
+    $this->type("id=partenaires", "association des matheux de blaye");
+    $this->type("id=public", "college - lycee");
+    $this->type("id=content", "presentation generale");
+    $this->click("id=Ajouter");
+    $this->waitForPageToLoad("30000");
+    $this->click("link=accueil");
+    $this->waitForPageToLoad("30000");
+  }
+
+  public function test_update_atelier()
+  {
+    $this->open("/cnrs_workshops.com/atelier.php");
+    $this->click("id=Lister");
+    $this->waitForPageToLoad("30000");
+    $this->click("css=#modification1 > form[name=\"suppression\"] > button[name=\"valeur\"]");
+    $this->waitForPageToLoad("30000");
+    $this->type("id=theme", "totologie");
+    $this->click("css=button.btn.btn-primary");
+    $this->waitForPageToLoad("30000");
+    $this->click("link=Accueil");
+    $this->waitForPageToLoad("30000");
+	}
+
+  public function test_delete_atelier()
+  {
+    $this->open("/cnrs_workshops.com/atelier.php");
+    $this->click("id=Lister");
+    $this->waitForPageToLoad("30000");
+    $this->click("css=#suppression1 > form[name=\"suppression\"] > button[name=\"valeur\"]");
+    $this->waitForPageToLoad("30000");
+    $this->click("link=accueil");
+    $this->waitForPageToLoad("30000");
+	}
+}
+?>
