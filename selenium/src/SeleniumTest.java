@@ -1,4 +1,3 @@
-import java.util.regex.Pattern;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,16 +19,11 @@ public class SeleniumTest {
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
     baseUrl = "http://localhost";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);   
   }
 
-  @Test
-  public void testApplication() throws Exception {
-	
-	File f = new File("Resultat_Test.txt");
-	FileWriter fw = new FileWriter (f);
-    driver.get(baseUrl + "/projet/atelier.php");
+  
+  public void AjoutAtelier(FileWriter fw) throws Exception {
     driver.findElement(By.cssSelector("button.btn.btn-primary")).click(); 
     fw.write ("Atelier to AddAtelier Ok \r\n");
     driver.findElement(By.id("theme")).clear();
@@ -63,33 +57,52 @@ public class SeleniumTest {
     fw.write ("AddAtelier Addcontent Ok\r\n");
     driver.findElement(By.linkText("accueil")).click();
     fw.write ("AddAtelier to Atelier Ok\r\n");
-    driver.findElement(By.id("Lister")).click();
-    fw.write ("Atelier to ListAtelier Ok\r\n");
-    driver.findElement(By.cssSelector("#modification > form[name=\"suppression\"] > button[name=\"valeur\"]")).click();
-    fw.write ("Modification clic Ok\r\n");
-    driver.findElement(By.id("type")).clear();
-    driver.findElement(By.id("type")).sendKeys("hey");
-    fw.write ("Modification area Ok\r\n");
-    driver.findElement(By.cssSelector("button.btn.btn-primary")).click();
-    fw.write ("Modification validation Ok\r\n");
-    driver.findElement(By.linkText("Accueil")).click();
-    fw.write ("Modification to Atelier Ok\r\n");
-    driver.findElement(By.id("Lister")).click();
-    fw.write ("Atelier to ListAtelier Ok\r\n");
-    driver.findElement(By.cssSelector("#modification > form[name=\"suppression\"] > button[name=\"valeur\"]")).click();
-    driver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
-    fw.write ("ListAtelier to Atelier Ok\r\n");
-    driver.findElement(By.id("Lister")).click();
-    fw.write ("Atelier to ListAtelier Ok\r\n");
-    driver.findElement(By.name("valeur")).click();
-    fw.write ("suppression Ok\r\n");
-    driver.findElement(By.linkText("accueil")).click();
-    fw.write ("go to atelier Ok\r\n");
-    driver.findElement(By.id("Lister")).click();
-    fw.write ("verification List Ok\r\n");
-    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-    fw.close();
   }
+  
+  public void Modification(FileWriter fw) throws Exception {
+	  driver.findElement(By.id("Lister")).click();
+	    fw.write ("Atelier to ListAtelier Ok\r\n");
+	    driver.findElement(By.cssSelector("#modification > form[name=\"suppression\"] > button[name=\"valeur\"]")).click();
+	    fw.write ("Modification clic Ok\r\n");
+	    driver.findElement(By.id("type")).clear();
+	    driver.findElement(By.id("type")).sendKeys("hey");
+	    fw.write ("Modification area Ok\r\n");
+	    driver.findElement(By.cssSelector("button.btn.btn-primary")).click();
+	    fw.write ("Modification validation Ok\r\n");
+	    driver.findElement(By.linkText("Accueil")).click();
+	    fw.write ("Modification to Atelier Ok\r\n");
+	    driver.findElement(By.id("Lister")).click();
+	    fw.write ("Atelier to ListAtelier Ok\r\n");
+	    driver.findElement(By.cssSelector("#modification > form[name=\"suppression\"] > button[name=\"valeur\"]")).click();
+	    driver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
+	    fw.write ("ListAtelier to Atelier Ok\r\n");
+	   
+  }
+  
+  public void Suppression(FileWriter fw) throws Exception{
+	 	driver.findElement(By.id("Lister")).click();
+	    fw.write ("Atelier to ListAtelier Ok\r\n");
+	    driver.findElement(By.name("valeur")).click();
+	    fw.write ("suppression Ok\r\n");
+	    driver.findElement(By.linkText("accueil")).click();
+	    fw.write ("go to atelier Ok\r\n");
+	    driver.findElement(By.id("Lister")).click();
+	    fw.write ("verification List Ok\r\n");
+	    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+  }
+  
+  
+  @Test
+  public void LaunchTest() throws Exception{
+	File f = new File("Resultat_Test.txt");
+	FileWriter fw = new FileWriter (f);
+	driver.get(baseUrl + "/projet/atelier.php");
+	AjoutAtelier(fw);
+	Modification(fw);
+	Suppression(fw);
+	fw.close();
+  }
+  
 
   @After
   public void tearDown() throws Exception {
